@@ -16,5 +16,5 @@ repos:
       name: terraform-docs
       language: docker_image
       entry: quay.io/terraform-docs/terraform-docs:latest
-      args: ["markdown", "table", "--output-file", "README.md", "./Project_A"]
+      args: ["markdown", "table", "--output-file", "Project_A.md", "./Project_A"]
       pass_filenames: false
