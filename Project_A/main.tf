@@ -14,6 +14,7 @@ resource "azurerm_public_ip" "public_ip" {
   allocation_method = "Static"
 }
 
+# Network Interface Card
 resource "azurerm_network_interface" "vm1_nic" {
   resource_group_name = azurerm_resource_group.bryson_group.name
   location            = azurerm_resource_group.bryson_group.location
