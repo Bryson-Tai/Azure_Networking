@@ -19,9 +19,12 @@ resource "azurerm_network_security_rule" "enable_ssh" {
   destination_port_ranges = [
     "22",
     "80",
-    "443"
+    "443",
+    "3306"
   ]
   source_address_prefixes = [
+    # Allow first VM (52.175.28.35) to inbound to VM with MySQL (20.2.154.51)
+    "52.175.28.35",
     "202.187.32.88",
   ]
   destination_address_prefix = "*"
