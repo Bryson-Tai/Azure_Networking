@@ -1,0 +1,10 @@
+.vscode
+
+.terraform
+.terraform.*
+terraform.tfstate
+terraform.tfstate.*
+
+.pre-commit-trivy-cache
+
+.env.*
