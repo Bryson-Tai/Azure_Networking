@@ -12,6 +12,8 @@ repos:
     - id: tofu_docs
       args:
         - --hook-config=--path-to-file=TF_Project_B.md
+        - --hook-config=--add-to-existing-file=true     # Boolean. true or false
+        - --hook-config=--create-file-if-not-exist=true # Boolean. true or false
       # args: ["markdown", "table", "--output-file", "TF_Project_B.md", "./Project_B"]
 
 # - repo: local
