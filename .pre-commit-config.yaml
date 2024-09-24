@@ -11,10 +11,6 @@ repos:
     - id: tofu_validate
     - id: tofu_docs
       args:
-        - markdown
-        - table
-        - output-file
-        - TF_Project_B.md
         - --hook-config=--add-to-existing-file=true
         - --hook-config=--create-file-if-not-exist=true
 
