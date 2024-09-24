@@ -4,17 +4,21 @@ repos:
   hooks:
     - id: trailing-whitespace
 
-- repo: https://github.com/antonbabenko/pre-commit-terraform
-  rev: v1.96.0
+- repo: https://github.com/tofuutils/pre-commit-opentofu
+  rev: v1.0.4
   hooks:
-    - id: terraform_fmt
-    - id: terraform_validate
+    - id: tofu_fmt
+    - id: tofu_validate
+    - id: tofu_docs
+      args:
+        - --hook-config=--path-to-file=TF_Project_B.md
+      # args: ["markdown", "table", "--output-file", "TF_Project_B.md", "./Project_B"]
 
-- repo: local
-  hooks:
-    - id: terraform-docs
-      name: terraform-docs
-      language: docker_image
-      entry: quay.io/terraform-docs/terraform-docs:latest
-      args: ["markdown", "table", "--output-file", "TF_Project_A.md", "./Project_A"]
-      pass_filenames: false
+# - repo: local
+#   hooks:
+#     - id: terraform-docs
+#       name: terraform-docs
+#       language: docker_image
+#       entry: quay.io/terraform-docs/terraform-docs:latest
+#       args: ["markdown", "table", "--output-file", "TF_Project_A.md", "./Project_A"]
+#       pass_filenames: false
