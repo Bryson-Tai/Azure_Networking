@@ -14,7 +14,7 @@ repos:
         - --hook-config=markdown=table
         - --hook-config=--output-file=TF_Project_B.md
         # - --hook-config=--add-to-existing-file=true     # Boolean. true or false
-        # - --hook-config=--create-file-if-not-exist=true # Boolean. true or false
+        - --hook-config=--create-file-if-not-exist=true # Boolean. true or false
       # args: ["markdown", "table", "--output-file", "TF_Project_B.md", "./Project_B"]
 
 # - repo: local
