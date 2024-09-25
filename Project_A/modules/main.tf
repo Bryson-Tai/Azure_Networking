@@ -1,25 +1,25 @@
 # Resource Group
-resource "azurerm_resource_group" "bryson_group" {
-  name     = "Bryson_TDP_POC_${var.project_postfix}"
+resource "azurerm_resource_group" "main_rg" {
+  name     = "${var.group_name_prefix}-rg"
   location = "eastasia"
 }
 
 # Public IP
 resource "azurerm_public_ip" "public_ip" {
-  resource_group_name = azurerm_resource_group.bryson_group.name
-  location            = azurerm_resource_group.bryson_group.location
+  resource_group_name = azurerm_resource_group.main_rg.name
+  location            = azurerm_resource_group.main_rg.location
 
-  name = "${azurerm_resource_group.bryson_group.name}-public-ip"
+  name = "${var.group_name_prefix}-public-ip"
 
   allocation_method = "Static"
 }
 
 # Network Interface Card
 resource "azurerm_network_interface" "vm1_nic" {
-  resource_group_name = azurerm_resource_group.bryson_group.name
-  location            = azurerm_resource_group.bryson_group.location
+  resource_group_name = azurerm_resource_group.main_rg.name
+  location            = azurerm_resource_group.main_rg.location
 
-  name = "${azurerm_resource_group.bryson_group.name}-vm1-nic"
+  name = "${var.group_name_prefix}-vm1-nic"
 
   ip_configuration {
     name                          = "internal"
@@ -31,10 +31,10 @@ resource "azurerm_network_interface" "vm1_nic" {
 }
 
 resource "azurerm_linux_virtual_machine" "vm1" {
-  resource_group_name = azurerm_resource_group.bryson_group.name
-  location            = azurerm_resource_group.bryson_group.location
+  resource_group_name = azurerm_resource_group.main_rg.name
+  location            = azurerm_resource_group.main_rg.location
 
-  name           = replace("${azurerm_resource_group.bryson_group.name}-nginx-server-vm", "_", "-")
+  name           = replace("${var.group_name_prefix}-nginx-server-vm", "_", "-")
   size           = "Standard_A2_v2"
   admin_username = "adminuser"
 
