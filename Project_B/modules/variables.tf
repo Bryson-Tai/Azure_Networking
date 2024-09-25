@@ -16,7 +16,37 @@ variable "resource_group_location" {
   default     = "eastasia"
 }
 
-# variable "security_group_config" {
-#   description = "Provide Security Group Config"
-#   type =
-# }
+variable "security_rule_config" {
+  description = "Provide Security Group Config"
+  type = map(object({
+    priority                     = number
+    enable_inbound               = optional(bool, true)
+    allow_access                 = optional(bool, true)
+    protocol                     = optional(string, "*")
+    source_port_range            = optional(string, "*")
+    destination_port_range       = optional(string, "*")
+    source_address_prefix        = optional(string, "*")
+    destination_address_prefix   = optional(string, "*")
+    source_port_ranges           = optional(list(string), [])
+    destination_port_ranges      = optional(list(string), [])
+    source_address_prefixes      = optional(list(string), [])
+    destination_address_prefixes = optional(list(string), [])
+  }))
+
+  default = {
+    "nsg_name" = {
+      priority                     = 100
+      enable_inbound               = true
+      allow_access                 = true
+      protocol                     = "Tcp"
+      source_port_range            = "*"
+      destination_port_range       = "*"
+      source_address_prefix        = "*"
+      destination_address_prefix   = "*"
+      source_port_ranges           = []
+      destination_port_ranges      = []
+      source_address_prefixes      = []
+      destination_address_prefixes = []
+    }
+  }
+}
