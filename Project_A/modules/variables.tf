@@ -3,3 +3,9 @@ variable "group_name_prefix" {
   type        = string
   default     = "project_a_poc_testing"
 }
+
+variable "resource_group_location" {
+  description = "Provide resource group location"
+  type        = string
+  default     = "eastasia"
+}

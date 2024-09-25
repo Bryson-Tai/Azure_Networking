@@ -1,7 +1,7 @@
 # Resource Group
 resource "azurerm_resource_group" "main_rg" {
   name     = "${var.group_name_prefix}-rg"
-  location = "eastasia"
+  location = var.resource_group_location
 }
 
 # Public IP
