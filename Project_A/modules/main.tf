@@ -15,22 +15,22 @@ resource "azurerm_public_ip" "public_ip" {
 }
 
 # Network Interface Card
-resource "azurerm_network_interface" "vm1_nic" {
+resource "azurerm_network_interface" "vm_nic" {
   resource_group_name = azurerm_resource_group.main_rg.name
   location            = azurerm_resource_group.main_rg.location
 
-  name = "${var.group_name_prefix}-vm1-nic"
+  name = "${var.group_name_prefix}-vm-nic"
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.subnet1.id
+    subnet_id                     = azurerm_subnet.subnet.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.public_ip.id
     primary                       = true
   }
 }
 
-resource "azurerm_linux_virtual_machine" "vm1" {
+resource "azurerm_linux_virtual_machine" "vm" {
   resource_group_name = azurerm_resource_group.main_rg.name
   location            = azurerm_resource_group.main_rg.location
 
@@ -39,7 +39,7 @@ resource "azurerm_linux_virtual_machine" "vm1" {
   admin_username = "adminuser"
 
   network_interface_ids = [
-    azurerm_network_interface.vm1_nic.id,
+    azurerm_network_interface.vm_nic.id,
   ]
 
   admin_ssh_key {

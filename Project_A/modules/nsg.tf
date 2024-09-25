@@ -52,6 +52,6 @@ resource "azurerm_network_security_rule" "enable_ping" {
 # Associate this network security group to subnet
 #! We could associate this to Network Interface Card (NIC) too
 resource "azurerm_subnet_network_security_group_association" "sec_group_assoc" {
-  subnet_id                 = azurerm_subnet.subnet1.id
+  subnet_id                 = azurerm_subnet.subnet.id
   network_security_group_id = azurerm_network_security_group.network_sec_group.id
 }
