@@ -27,9 +27,8 @@ resource "azurerm_network_security_rule" "enable_ssh" {
     "80",
     "443"
   ]
-  source_address_prefixes = [
-    data.http.ip.response_body
-  ]
+  source_address_prefix = data.http.ip.response_body
+
   destination_address_prefix = "*"
 }
 

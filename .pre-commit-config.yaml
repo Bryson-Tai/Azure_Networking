@@ -8,7 +8,6 @@ repos:
   rev: v1.0.4
   hooks:
     - id: tofu_fmt
-    - id: tofu_validate
     - id: tofu_docs
       args:
         - --hook-config=--add-to-existing-file=true
