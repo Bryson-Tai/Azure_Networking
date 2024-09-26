@@ -8,7 +8,7 @@ module "sql_infra" {
   security_rule_config = {
     "allowConnectMySQL" = {
       priority              = 100
-      source_address_prefix = "20.255.75.105"
+      source_address_prefix = "Source_Address_Go_Here"
     }
   }
 }
