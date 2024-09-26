@@ -1,4 +1,4 @@
-# second_infra
+# first_infra
 
 <!-- BEGINNING OF PRE-COMMIT-OPENTOFU DOCS HOOK -->
 ## Requirements
@@ -18,7 +18,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_second_infra"></a> [second\_infra](#module\_second\_infra) | ../modules | n/a |
+| <a name="module_nginx_infra"></a> [nginx\_infra](#module\_nginx\_infra) | ../modules | n/a |
 
 ## Resources
 
@@ -32,5 +32,5 @@ No inputs.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_second_infra_public_ip"></a> [second\_infra\_public\_ip](#output\_second\_infra\_public\_ip) | n/a |
+| <a name="output_nginx_infra_public_ip"></a> [nginx\_infra\_public\_ip](#output\_nginx\_infra\_public\_ip) | n/a |
 <!-- END OF PRE-COMMIT-OPENTOFU DOCS HOOK -->

@@ -1,4 +1,4 @@
-# first_infra
+# second_infra
 
 <!-- BEGINNING OF PRE-COMMIT-OPENTOFU DOCS HOOK -->
 ## Requirements
@@ -18,7 +18,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_first_infra"></a> [first\_infra](#module\_first\_infra) | ../modules | n/a |
+| <a name="module_sql_infra"></a> [sql\_infra](#module\_sql\_infra) | ../modules | n/a |
 
 ## Resources
 
@@ -32,5 +32,5 @@ No inputs.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_first_infra_public_ip"></a> [first\_infra\_public\_ip](#output\_first\_infra\_public\_ip) | n/a |
+| <a name="output_sql_infra_public_ip"></a> [sql\_infra\_public\_ip](#output\_sql\_infra\_public\_ip) | n/a |
 <!-- END OF PRE-COMMIT-OPENTOFU DOCS HOOK -->

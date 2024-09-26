@@ -60,5 +60,5 @@ resource "azurerm_linux_virtual_machine" "vm" {
     version   = "latest"
   }
 
-  custom_data = filebase64("${path.module}/bash/install_nginx.sh")
+  custom_data = filebase64("${path.module}/bash/essential_vm_setup.sh")
 }

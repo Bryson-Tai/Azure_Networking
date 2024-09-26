@@ -50,7 +50,7 @@ resource "azurerm_network_security_rule" "enable_ssh" {
   destination_address_prefix = "*"
 }
 
-# Enable to ping by Default
+# Enable to Ping by Default
 resource "azurerm_network_security_rule" "enable_ping" {
   resource_group_name         = azurerm_resource_group.main_rg.name
   network_security_group_name = azurerm_network_security_group.network_sec_group.name
