@@ -1,9 +1,11 @@
 #! /bin/bash
 
-# Install MySQL server
-sudo apt update -y && sudo apt install -y mysql-server nginx
+# Purposely put to wait VM to fully startup
+#! Else, it will not able to run `apt update` properly
+sleep 10s
 
-sleep 5
+# Install MySQL and Nginx Server
+sudo apt update && sudo apt install -y mysql-server nginx
 
 # Change bind-address config to remote enable MySQL server
 sudo sed -i -e "s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" "/etc/mysql/mysql.conf.d/mysqld.cnf"

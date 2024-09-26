@@ -59,6 +59,17 @@ resource "azurerm_linux_virtual_machine" "vm" {
     sku       = "22_04-lts"
     version   = "latest"
   }
+}
 
-  custom_data = filebase64("${path.module}/bash/essential_vm_setup.sh")
+resource "null_resource" "configure_vm" {
+  provisioner "remote-exec" {
+    connection {
+      type        = "ssh"
+      host        = azurerm_public_ip.public_ip.ip_address
+      user        = azurerm_linux_virtual_machine.vm.admin_username
+      private_key = tls_private_key.vm_ssh_keys.private_key_openssh
+    }
+
+    script = "${path.module}/bash/essential_vm_setup.sh"
+  }
 }
