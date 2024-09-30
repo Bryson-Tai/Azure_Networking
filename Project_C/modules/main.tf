@@ -4,7 +4,7 @@ resource "azurerm_resource_group" "main_rg" {
   location = var.resource_group_location
 }
 
-# Public IP
+# Public IP - For SSH use
 resource "azurerm_public_ip" "public_ip" {
   resource_group_name = azurerm_resource_group.main_rg.name
   location            = azurerm_resource_group.main_rg.location
@@ -31,6 +31,8 @@ resource "azurerm_network_interface" "vm_nic" {
 }
 
 resource "azurerm_linux_virtual_machine" "vm" {
+  count = var.vm_quantity
+
   resource_group_name = azurerm_resource_group.main_rg.name
   location            = azurerm_resource_group.main_rg.location
 
@@ -66,7 +68,7 @@ resource "null_resource" "configure_vm" {
     connection {
       type        = "ssh"
       host        = azurerm_public_ip.public_ip.ip_address
-      user        = azurerm_linux_virtual_machine.vm.admin_username
+      user        = azurerm_linux_virtual_machine.vm[*].admin_username
       private_key = tls_private_key.vm_ssh_keys.private_key_openssh
     }
 

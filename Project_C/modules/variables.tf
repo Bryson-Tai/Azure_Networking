@@ -16,6 +16,22 @@ variable "resource_group_location" {
   default     = "eastasia"
 }
 
+variable "vritual_network_name" {
+  type        = string
+  description = "Virtual Network Name"
+}
+
+variable "subnet_ip_ranges" {
+  type        = list(string)
+  description = "Subnet IP Prefixes"
+}
+
+variable "vm_quantity" {
+  type        = number
+  default     = 1
+  description = "Number of VM needed"
+}
+
 variable "security_rule_config" {
   description = "Provide Security Group Config"
   type = map(object({
