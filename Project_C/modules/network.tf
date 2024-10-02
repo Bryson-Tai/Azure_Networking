@@ -1,8 +1,10 @@
 # Subnets
 resource "azurerm_subnet" "subnet" {
-  resource_group_name  = azurerm_resource_group.main_rg.name
+  for_each = var.subnet_config
+
+  resource_group_name  = var.rg_name
   virtual_network_name = var.vritual_network_name
 
-  name             = "${var.vritual_network_name}-subnet"
-  address_prefixes = var.subnet_ip_ranges
+  name             = "${var.vritual_network_name}-${each.key}-subnet"
+  address_prefixes = each.value.subnet_ip_ranges
 }
