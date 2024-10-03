@@ -36,6 +36,16 @@ module "server_group_1" {
       subnet_ip_ranges = ["10.0.1.0/24"]
 
       security_rule_config = {
+        # "server_group_4_access" = {
+        #   priority                   = 480
+        #   inbound_or_outbound        = true
+        #   allow_access               = true
+        #   protocol                   = "Tcp"
+        #   source_port_range          = "*"
+        #   destination_port_range     = "*"
+        #   source_address_prefix      = "10.0.4.0/24"
+        #   destination_address_prefix = "10.0.1.0/24"
+        # }
       }
     }
   }
@@ -104,13 +114,13 @@ module "remote_servers" {
   vritual_network_name = azurerm_virtual_network.vn.name
 
   vm_config = {
-    "client_4" = {
+    "webserver" = {
       subnetName = "subnet-4"
       app_sec_group_list = [
         "webserver"
       ]
     }
-    "client_5" = {
+    "tomcat" = {
       subnetName = "subnet-4"
       app_sec_group_list = [
         "tomcatserver"
@@ -123,6 +133,58 @@ module "remote_servers" {
       subnet_ip_ranges = ["10.0.4.0/24"]
 
       security_rule_config = {
+        # Allow Tomcat to be view in local machine
+        "enable_tomcat_outflow" = {
+          priority                   = 500
+          inbound_or_outbound        = true
+          allow_access               = true
+          protocol                   = "Tcp"
+          source_port_range          = "*"
+          destination_port_range     = "8080"
+          source_address_prefix      = "*"
+          destination_address_prefix = "*"
+        }
+        # Scenario 1: Allow other Server Groups to access the Remote Server Group
+        "server_groups_access" = {
+          priority               = 480
+          inbound_or_outbound    = true
+          allow_access           = true
+          protocol               = "Tcp"
+          source_port_range      = "*"
+          destination_port_range = "*"
+          source_address_prefixes = [
+            "10.0.1.0/24",
+            "10.0.2.0/24",
+            "10.0.3.0/24",
+          ]
+          destination_address_prefix = "10.0.4.0/24"
+        }
+        # Scenario 2: Allow Server Group 2 to access WebServer ASG only
+        "deny_group_2_tomcat_access" = {
+          priority               = 460
+          inbound_or_outbound    = true
+          allow_access           = false
+          protocol               = "Tcp"
+          source_port_range      = "*"
+          destination_port_range = "*"
+          source_address_prefix  = "10.0.2.0/24"
+          destination_application_security_group_list = [
+            "tomcatserver"
+          ]
+        }
+        # Scenario 3: Allow Server Group 3 to access TomcatServer ASG only
+        "deny_group_3_webserver_access" = {
+          priority               = 440
+          inbound_or_outbound    = true
+          allow_access           = false
+          protocol               = "Tcp"
+          source_port_range      = "*"
+          destination_port_range = "*"
+          source_address_prefix  = "10.0.3.0/24"
+          destination_application_security_group_list = [
+            "webserver"
+          ]
+        }
       }
     }
   }

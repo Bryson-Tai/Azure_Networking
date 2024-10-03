@@ -11,7 +11,7 @@ variable "rg_name" {
 }
 
 variable "rg_location" {
-  description = "Provide resource group location"
+  description = "Resource group location"
   type        = string
   default     = "eastasia"
 }
@@ -43,13 +43,13 @@ variable "subnet_config" {
 
     security_rule_config = map(object({
       priority                                    = number
-      enable_inbound                              = optional(bool, true)
+      inbound_or_outbound                         = optional(bool, true)
       allow_access                                = optional(bool, true)
-      protocol                                    = optional(string, "*")
-      source_port_range                           = optional(string, "*")
-      destination_port_range                      = optional(string, "*")
-      source_address_prefix                       = optional(string, "*")
-      destination_address_prefix                  = optional(string, "*")
+      protocol                                    = optional(string, null)
+      source_port_range                           = optional(string, null)
+      destination_port_range                      = optional(string, null)
+      source_address_prefix                       = optional(string, null)
+      destination_address_prefix                  = optional(string, null)
       source_port_ranges                          = optional(list(string), [])
       destination_port_ranges                     = optional(list(string), [])
       source_address_prefixes                     = optional(list(string), [])
@@ -66,19 +66,19 @@ variable "subnet_config" {
       security_rule_config = {
         "nsg_name" = {
           priority                                    = 100
-          enable_inbound                              = true
+          inbound_or_outbound                         = true
           allow_access                                = true
-          protocol                                    = "Tcp"
-          source_port_range                           = "*"
-          destination_port_range                      = "*"
-          source_address_prefix                       = "*"
-          destination_address_prefix                  = "*"
+          protocol                                    = null
+          source_port_range                           = null
+          destination_port_range                      = null
+          source_address_prefix                       = null
+          destination_address_prefix                  = null
           source_port_ranges                          = []
           destination_port_ranges                     = []
           source_address_prefixes                     = []
           destination_address_prefixes                = []
-          source_application_security_group_name      = []
-          destination_application_security_group_name = []
+          source_application_security_group_list      = []
+          destination_application_security_group_list = []
         }
       }
     }

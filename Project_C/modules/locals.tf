@@ -15,7 +15,8 @@ locals {
         subnetName    = subnetName
         security_key  = security_key
         security_rule = security_rule
-    }]
+      }
+    ]
   ])
 
   structured_vm_config = {
