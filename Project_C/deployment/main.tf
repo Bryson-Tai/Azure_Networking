@@ -184,17 +184,17 @@ module "remote_servers" {
 }
 
 output "client_1_public_ip" {
-  value = module.server_group_1.vm_public_ip
+  value = module.server_group_1.vm_ips
 }
 
 output "client_2_public_ip" {
-  value = module.server_group_2.vm_public_ip
+  value = module.server_group_2.vm_ips
 }
 
 output "client_3_public_ip" {
-  value = module.server_group_3.vm_public_ip
+  value = module.server_group_3.vm_ips
 }
 
 output "remote_servers_public_ips" {
-  value = module.remote_servers.vm_public_ip
+  value = module.remote_servers.vm_ips
 }

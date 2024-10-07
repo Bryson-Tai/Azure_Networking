@@ -54,5 +54,5 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_vm_public_ip"></a> [vm\_public\_ip](#output\_vm\_public\_ip) | n/a |
+| <a name="output_vm_ips"></a> [vm\_ips](#output\_vm\_ips) | n/a |
 <!-- END OF PRE-COMMIT-OPENTOFU DOCS HOOK -->

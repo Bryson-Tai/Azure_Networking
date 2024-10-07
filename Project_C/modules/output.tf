@@ -1,4 +1,4 @@
-output "vm_public_ip" {
+output "vm_ips" {
   value = {
     for key, value in local.structured_vm_config : key => {
       public_ip  = azurerm_linux_virtual_machine.vm[key].public_ip_address

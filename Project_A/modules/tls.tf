@@ -10,9 +10,9 @@ resource "null_resource" "save_private_key" {
   sshDir=$HOME/.ssh
 
   mkdir -p $sshDir
-  cat ${tls_private_key.vm_ssh_keys.private_key_openssh} > $sshDir/azure_dev_personal
+  cat ${tls_private_key.vm_ssh_keys.private_key_openssh} > $sshDir/azure_vm_personal
 
-  chmod 600 $sshDir/azure_dev_personal
+  chmod 600 $sshDir/azure_vm_personal
  EOF
   }
 }

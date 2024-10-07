@@ -1,5 +1,6 @@
-output "vm_public_ip" {
+output "vm_ips" {
   value = {
-    vm_public_ip = azurerm_public_ip.public_ip.ip_address
+    vm_public_ip  = azurerm_linux_virtual_machine.vm.public_ip_address
+    vm_private_ip = azurerm_linux_virtual_machine.vm.private_ip_address
   }
 }
