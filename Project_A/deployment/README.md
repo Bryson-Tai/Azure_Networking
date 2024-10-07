@@ -17,7 +17,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_project_a"></a> [project\_a](#module\_project\_a) | ./modules | n/a |
+| <a name="module_project_a"></a> [project\_a](#module\_project\_a) | ../modules | n/a |
 
 ## Resources
 
