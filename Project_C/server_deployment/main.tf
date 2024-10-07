@@ -36,16 +36,6 @@ module "server_group_1" {
       subnet_ip_ranges = ["10.0.1.0/24"]
 
       security_rule_config = {
-        # "server_group_4_access" = {
-        #   priority                   = 480
-        #   inbound_or_outbound        = true
-        #   allow_access               = true
-        #   protocol                   = "Tcp"
-        #   source_port_range          = "*"
-        #   destination_port_range     = "*"
-        #   source_address_prefix      = "10.0.4.0/24"
-        #   destination_address_prefix = "10.0.1.0/24"
-        # }
       }
     }
   }
@@ -133,14 +123,17 @@ module "remote_servers" {
       subnet_ip_ranges = ["10.0.4.0/24"]
 
       security_rule_config = {
-        # Allow Tomcat to be view in local machine
-        "enable_tomcat_outflow" = {
-          priority                   = 500
-          inbound_or_outbound        = true
-          allow_access               = true
-          protocol                   = "Tcp"
-          source_port_range          = "*"
-          destination_port_range     = "8080"
+        # Allow Remote Server welcome page to be viewed in my PC
+        "enable_remote_server_to_local" = {
+          priority            = 500
+          inbound_or_outbound = true
+          allow_access        = true
+          protocol            = "Tcp"
+          source_port_range   = "*"
+          destination_port_ranges = [
+            "80",
+            "8080"
+          ]
           source_address_prefix      = "*"
           destination_address_prefix = "*"
         }

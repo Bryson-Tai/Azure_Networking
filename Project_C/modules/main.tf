@@ -90,16 +90,4 @@ resource "null_resource" "configure_vm" {
 
     script = "${path.module}/bash/essential_vm_setup.sh"
   }
-
-  provisioner "file" {
-    connection {
-      type        = "ssh"
-      host        = azurerm_public_ip.public_ip[each.key].ip_address
-      user        = azurerm_linux_virtual_machine.vm[each.key].admin_username
-      private_key = tls_private_key.vm_ssh_keys[each.key].private_key_openssh
-    }
-
-    source      = "${path.module}/bash/install_tomcat.sh"
-    destination = "/tmp/"
-  }
 }
