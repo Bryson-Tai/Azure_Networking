@@ -1,8 +1,12 @@
-# Project A: Basic VN and Subnet, NSG
+# Project B: Communication of Nginx & MySQL Remote Server in 2 VN and Subnet, NSG
 
 ## Description
 
-This project mainly to learn how to 2 Virtual Machine communicated through Public IP where they are located in 2 different Virtual Network. It could be using Terraform or OpenTofu to provision this project. Nginx and MySQL server would be setup automatically with proper Network Security Group configured which accessible from your local machine.
+- This project mainly to learn how 2 Virtual Machine communicated through Public IP when they are located in 2 different Virtual Network.
+
+- It could be using Terraform or OpenTofu to provision this project.
+
+- Nginx and MySQL server would be setup automatically with proper Network Security Group configured which accessible from your local machine.
 
 ## Architecture
 
@@ -51,8 +55,10 @@ terraform apply
         # SSH to the Nginx VM
         ssh -i ~/.ssh/azure_vm_personal_nginx adminuser@<public IP>
 
-        # Connect to MySQL VM
-        mysql -u testUser -p test123 -h <MySQL server Public IP>
+        # Connect to MySQL VM, user and password are set by default for learning purpose
+        # ID: testUser
+        # Password: test123
+        mysql -u testUser -p -h <MySQL server Public IP>
 
         # Create a simple database and table
         CREATE DATABASE testDB;
@@ -73,7 +79,7 @@ terraform apply
         ssh -i ~/.ssh/azure_vm_personal_mysql adminuser@<public IP>
 
         # Connect with MySQL just for verify purpose
-        sudo mysql -uroot
+        sudo mysql
 
         # Create a simple database and table
         USE testDB;

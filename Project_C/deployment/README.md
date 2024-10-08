@@ -40,8 +40,8 @@ No inputs.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_client_1_public_ip"></a> [client\_1\_public\_ip](#output\_client\_1\_public\_ip) | n/a |
-| <a name="output_client_2_public_ip"></a> [client\_2\_public\_ip](#output\_client\_2\_public\_ip) | n/a |
-| <a name="output_client_3_public_ip"></a> [client\_3\_public\_ip](#output\_client\_3\_public\_ip) | n/a |
-| <a name="output_remote_servers_public_ips"></a> [remote\_servers\_public\_ips](#output\_remote\_servers\_public\_ips) | n/a |
+| <a name="output_remote_servers_ips"></a> [remote\_servers\_ips](#output\_remote\_servers\_ips) | n/a |
+| <a name="output_server_group_1_ips"></a> [server\_group\_1\_ips](#output\_server\_group\_1\_ips) | n/a |
+| <a name="output_server_group_2_ips"></a> [server\_group\_2\_ips](#output\_server\_group\_2\_ips) | n/a |
+| <a name="output_server_group_3_ips"></a> [server\_group\_3\_ips](#output\_server\_group\_3\_ips) | n/a |
 <!-- END OF PRE-COMMIT-OPENTOFU DOCS HOOK -->

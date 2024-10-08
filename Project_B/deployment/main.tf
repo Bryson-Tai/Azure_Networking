@@ -1,14 +1,14 @@
 module "sql_infra" {
   source = "../modules"
 
-  group_name_prefix       = "project_b_poc"
-  project_postfix         = "sql"
+  group_name_prefix       = "project_b"
+  project_postfix         = "mysql"
   resource_group_location = "eastasia"
 
   security_rule_config = {
-    "allowConnectMySQL" = {
+    "allowNginxConnectMySQL" = {
       priority              = 100
-      source_address_prefix = module.sql_infra.vm_ips["vm_public_ip"]
+      source_address_prefix = module.nginx_infra.vm_ips["vm_public_ip"]
     }
   }
 }
@@ -16,7 +16,7 @@ module "sql_infra" {
 module "nginx_infra" {
   source = "../modules"
 
-  group_name_prefix       = "project_b_poc"
+  group_name_prefix       = "project_b"
   project_postfix         = "nginx"
   resource_group_location = "eastasia"
 

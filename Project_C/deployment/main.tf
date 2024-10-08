@@ -183,18 +183,18 @@ module "remote_servers" {
   }
 }
 
-output "client_1_public_ip" {
+output "server_group_1_ips" {
   value = module.server_group_1.vm_ips
 }
 
-output "client_2_public_ip" {
+output "server_group_2_ips" {
   value = module.server_group_2.vm_ips
 }
 
-output "client_3_public_ip" {
+output "server_group_3_ips" {
   value = module.server_group_3.vm_ips
 }
 
-output "remote_servers_public_ips" {
+output "remote_servers_ips" {
   value = module.remote_servers.vm_ips
 }
