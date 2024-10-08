@@ -56,12 +56,6 @@ terraform apply
 
 1. You may find all VMs public and private IPs outputed.
 2. You may try to ping or SSH to the VM using the public IPs, ssh private key located in `~/.ssh`.
-3. Private Key Files:
-    - azure_vm_personal_subnet-1-client_1
-    - azure_vm_personal_subnet-2-client_2
-    - azure_vm_personal_subnet-3-client_3
-    - azure_vm_personal_subnet-4-tomcat
-    - azure_vm_personal_subnet-4-webserver
 
     ```bash
         # Ping the VM
@@ -70,6 +64,13 @@ terraform apply
         # SSH to the MySQL VM
         ssh -i ~/.ssh/<private key file> adminuser@<public IP>
     ```
+
+3. Private Key Files Name
+    - azure_vm_personal_subnet-1-client_1
+    - azure_vm_personal_subnet-2-client_2
+    - azure_vm_personal_subnet-3-client_3
+    - azure_vm_personal_subnet-4-tomcat
+    - azure_vm_personal_subnet-4-webserver
 
 4. You may play around with the VMs by SSH into it and use `curl` to get Nginx main page based on the scenario setup.
 
