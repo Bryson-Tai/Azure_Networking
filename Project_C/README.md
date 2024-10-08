@@ -88,7 +88,7 @@ terraform apply
 5. Test for getting Tomcat default page based on <ins>__scenario 3__</ins>.
 
     ```bash
-        ssh -i ~/.ssh/azure_dev_personal_subnet-3-client_3 adminuser@<subnet 3 VM public IP>
+        ssh -i ~/.ssh/azure_vm_personal_subnet-3-client_3 adminuser@<subnet 3 VM public IP>
 
         # Get Tomcat default page
         curl <Tomcat Server private IP>:8080
