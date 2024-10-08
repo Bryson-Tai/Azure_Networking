@@ -1,7 +1,7 @@
 module "sql_infra" {
   source = "../modules"
 
-  group_name_prefix       = "project_b_poc_testing"
+  group_name_prefix       = "project_b_poc"
   project_postfix         = "sql"
   resource_group_location = "eastasia"
 
@@ -16,7 +16,7 @@ module "sql_infra" {
 module "nginx_infra" {
   source = "../modules"
 
-  group_name_prefix       = "project_b_poc_testing"
+  group_name_prefix       = "project_b_poc"
   project_postfix         = "nginx"
   resource_group_location = "eastasia"
 

@@ -6,13 +6,14 @@ resource "tls_private_key" "vm_ssh_keys" {
 # Save Private Key to local for SSH
 resource "null_resource" "save_private_key" {
   provisioner "local-exec" {
-    command = <<EOF
-  sshDir=$HOME/.ssh
+    interpreter = ["/bin/bash", "-c", ]
 
-  mkdir -p $sshDir
-  cat ${tls_private_key.vm_ssh_keys.private_key_openssh} > $sshDir/azure_vm_personal
+    command = templatefile("${path.module}/bash/download_private_key.sh", {
+      private_key = tls_private_key.vm_ssh_keys.private_key_openssh
+    })
+  }
 
-  chmod 600 $sshDir/azure_vm_personal
- EOF
+  triggers = {
+    ssh_key_change = tls_private_key.vm_ssh_keys.private_key_openssh
   }
 }

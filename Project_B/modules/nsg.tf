@@ -46,7 +46,7 @@ resource "azurerm_network_security_rule" "enable_ssh" {
   protocol                   = "Tcp"
   source_port_range          = "*"
   destination_port_range     = "22"
-  source_address_prefix      = data.http.ip.response_body
+  source_address_prefix      = chomp(data.http.ip.response_body)
   destination_address_prefix = "*"
 }
 

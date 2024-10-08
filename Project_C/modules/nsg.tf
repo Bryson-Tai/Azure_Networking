@@ -56,7 +56,7 @@ resource "azurerm_network_security_rule" "enable_ssh" {
   protocol                   = "Tcp"
   source_port_range          = "*"
   destination_port_range     = "22"
-  source_address_prefix      = data.http.ip.response_body
+  source_address_prefix      = chomp(data.http.ip.response_body)
   destination_address_prefix = "*"
 }
 
@@ -95,7 +95,6 @@ resource "azurerm_network_security_rule" "disable_subnets_comm" {
   source_address_prefix      = "VirtualNetwork"
   destination_address_prefix = "VirtualNetwork"
 }
-
 
 # Associate this network security group to subnet
 #! We could associate this to Network Interface Card (NIC) too
