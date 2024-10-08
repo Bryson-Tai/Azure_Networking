@@ -28,6 +28,14 @@
 2. Subnet 2 server is only allowed to access WebServerGroup servers in Subnet 4.
 3. Subnet 3 server is only allowed to access TomcatServerGroup servers in Subnet 4.
 
+## Notes Takeaway
+
+1. We are able to mix of IP addresses with Application Security Group. Check `/Project_C/deployment/main.tf`
+
+2. Application Security Group attached VM's NIC (Network Interface Card) layer.
+
+3. Network Security Group could attached at Subnet's (Preferrable) and NIC layer.
+
 ## Prerequisite
 
 1. Please export your SUBSCRIPTION_ID to your terminal.
@@ -97,14 +105,6 @@ terraform apply
         # Unable to get response from WebServer VM
         curl <Web Server private IP>
     ```
-
-## Notes Takeaway
-
-1. We are able to mix of IP addresses with Application Security Group. Check `/Project_C/deployment/main.tf`
-
-2. Application Security Group attached VM's NIC (Network Interface Card) layer.
-
-3. Network Security Group could attached at Subnet's (Preferrable) and NIC layer.
 
 ## Destroy Deployment
 
