@@ -1,7 +1,7 @@
 #! /bin/bash
 
 sshDir=$HOME/.ssh
-fileName=azure_dev_personal
+fileName=azure_vm_personal
 
 mkdir -p "$sshDir"
 
