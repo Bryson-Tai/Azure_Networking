@@ -1,6 +1,6 @@
 # Get your machine host IP for SSH enable
 data "http" "ip" {
-  url = "https://ifconfig.me/ip"
+  url = "https://checkip.amazonaws.com"
 }
 
 # Create Network Security Group
