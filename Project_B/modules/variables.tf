@@ -20,7 +20,7 @@ variable "security_rule_config" {
   description = "Provide Security Group Config"
   type = map(object({
     priority                     = number
-    enable_inbound               = optional(bool, true)
+    inbound_or_outbound          = optional(bool, true)
     allow_access                 = optional(bool, true)
     protocol                     = optional(string, "*")
     source_port_range            = optional(string, "*")
@@ -36,7 +36,7 @@ variable "security_rule_config" {
   default = {
     "nsg_name" = {
       priority                     = 100
-      enable_inbound               = true
+      inbound_or_outbound          = true
       allow_access                 = true
       protocol                     = "Tcp"
       source_port_range            = "*"

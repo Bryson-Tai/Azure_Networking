@@ -1,6 +1,6 @@
 # Get your machine host IP for SSH enable
 data "http" "ip" {
-  url = "https://ifconfig.me/ip"
+  url = "https://checkip.amazonaws.com"
 }
 
 # Create Network Security Group
@@ -19,7 +19,7 @@ resource "azurerm_network_security_rule" "custom_nsg_rules" {
 
   name      = each.key
   priority  = each.value.priority
-  direction = each.value.enable_inbound ? "Inbound" : "Outbound"
+  direction = each.value.inbound_or_outbound ? "Inbound" : "Outbound"
   access    = each.value.allow_access ? "Allow" : "Deny"
   protocol  = each.value.protocol
 
@@ -46,7 +46,7 @@ resource "azurerm_network_security_rule" "enable_ssh" {
   protocol                   = "Tcp"
   source_port_range          = "*"
   destination_port_range     = "22"
-  source_address_prefix      = data.http.ip.response_body
+  source_address_prefix      = chomp(data.http.ip.response_body)
   destination_address_prefix = "*"
 }
 
