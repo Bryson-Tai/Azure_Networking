@@ -23,11 +23,11 @@ module "nginx_infra" {
   security_rule_config = {}
 }
 
-output "sql_infra_public_ip" {
+output "sql_infra_ips" {
   value = module.sql_infra.vm_ips
 }
 
-output "nginx_infra_public_ip" {
+output "nginx_infra_ips" {
   value = module.nginx_infra.vm_ips
 }
 

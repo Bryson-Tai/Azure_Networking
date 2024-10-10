@@ -72,7 +72,7 @@ resource "azurerm_linux_virtual_machine" "public_vm" {
   name           = replace("${var.group_name_prefix}-public-vm", "_", "-")
   size           = "Standard_A2_v2"
   admin_username = "adminuser"
-  admin_password = "admin123"
+  admin_password = "Admin_123"
 
   network_interface_ids = [
     azurerm_network_interface.public_vm_nic.id,

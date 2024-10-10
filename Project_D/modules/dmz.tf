@@ -33,7 +33,7 @@ resource "azurerm_linux_virtual_machine" "dmz_vm" {
   name           = replace("${var.group_name_prefix}-private-vm", "_", "-")
   size           = "Standard_A2_v2"
   admin_username = "adminuser"
-  admin_password = "admin123"
+  admin_password = "Admin_123"
 
   network_interface_ids = [
     azurerm_network_interface.dmz_vm_nic.id,
