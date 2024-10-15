@@ -3,7 +3,6 @@ module "project_d" {
 
   group_name_prefix       = "project_d"
   resource_group_location = "eastasia"
-
 }
 
 # output "project_d_ips" {

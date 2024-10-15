@@ -3,7 +3,8 @@ resource "azurerm_subnet" "public_subnet" {
   resource_group_name  = azurerm_resource_group.main_rg.name
   virtual_network_name = azurerm_virtual_network.vn.name
 
-  name = "${var.group_name_prefix}-public-subnet"
+  # Bastion require 'AzureBastionSubnet' as the exact name of Subnet for creation
+  name = "AzureBastionSubnet"
 
   address_prefixes = [
     "10.0.1.0/24"
@@ -74,6 +75,8 @@ resource "azurerm_linux_virtual_machine" "public_vm" {
   admin_username = "adminuser"
   admin_password = "Admin_123"
 
+  disable_password_authentication = false
+
   network_interface_ids = [
     azurerm_network_interface.public_vm_nic.id,
   ]
@@ -87,7 +90,7 @@ resource "azurerm_linux_virtual_machine" "public_vm" {
   source_image_reference {
     publisher = "Canonical"
     offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "24_04-lts"
+    sku       = "22_04-lts"
     version   = "latest"
   }
 }

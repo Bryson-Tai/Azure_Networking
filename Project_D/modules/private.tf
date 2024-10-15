@@ -33,6 +33,8 @@ resource "azurerm_linux_virtual_machine" "private_vm" {
   admin_username = "adminuser"
   admin_password = "Admin_123"
 
+  disable_password_authentication = false
+
   network_interface_ids = [
     azurerm_network_interface.private_vm_nic.id,
   ]
@@ -46,7 +48,7 @@ resource "azurerm_linux_virtual_machine" "private_vm" {
   source_image_reference {
     publisher = "Canonical"
     offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "24_04-lts"
+    sku       = "22_04-lts"
     version   = "latest"
   }
 }

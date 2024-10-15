@@ -14,7 +14,7 @@ resource "azurerm_network_interface" "dmz_vm_nic" {
   resource_group_name = azurerm_resource_group.main_rg.name
   location            = azurerm_resource_group.main_rg.location
 
-  name = "${var.group_name_prefix}-private-vm-nic"
+  name = "${var.group_name_prefix}-dmz-vm-nic"
 
   ip_forwarding_enabled = true
 
@@ -30,10 +30,12 @@ resource "azurerm_linux_virtual_machine" "dmz_vm" {
   resource_group_name = azurerm_resource_group.main_rg.name
   location            = azurerm_resource_group.main_rg.location
 
-  name           = replace("${var.group_name_prefix}-private-vm", "_", "-")
+  name           = replace("${var.group_name_prefix}-dmz-vm", "_", "-")
   size           = "Standard_A2_v2"
   admin_username = "adminuser"
   admin_password = "Admin_123"
+
+  disable_password_authentication = false
 
   network_interface_ids = [
     azurerm_network_interface.dmz_vm_nic.id,
@@ -48,7 +50,7 @@ resource "azurerm_linux_virtual_machine" "dmz_vm" {
   source_image_reference {
     publisher = "Canonical"
     offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "24_04-lts"
+    sku       = "22_04-lts"
     version   = "latest"
   }
 
