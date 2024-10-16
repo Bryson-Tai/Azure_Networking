@@ -3,11 +3,10 @@ resource "azurerm_subnet" "public_subnet" {
   resource_group_name  = azurerm_resource_group.main_rg.name
   virtual_network_name = azurerm_virtual_network.vn.name
 
-  # Bastion require 'AzureBastionSubnet' as the exact name of Subnet for creation
-  name = "AzureBastionSubnet"
+  name = "${var.group_name_prefix}-public-subnet"
 
   address_prefixes = [
-    "10.0.1.0/24"
+    "10.0.0.0/24"
   ]
 }
 
@@ -16,39 +15,19 @@ resource "azurerm_route_table" "public_subnet_route_table" {
   resource_group_name = azurerm_resource_group.main_rg.name
   location            = azurerm_resource_group.main_rg.location
 
+  # NOTE: Route from current public subnet (10.0.0.0/24) through VirtualAppliance VM (10.0.3.4) to Private Subnet 10.0.2.0/24
+
   route {
     name                   = "to-private-subnet"
-    address_prefix         = "10.0.2.0/24" # From Private Subnet
     next_hop_type          = "VirtualAppliance"
-    next_hop_in_ip_address = "10.0.3.4" # To Virtual Appliance - DMZ
+    next_hop_in_ip_address = "10.0.3.4"    # Through Virtual Appliance - DMZ
+    address_prefix         = "10.0.2.0/24" # Destination Address - From Private Subnet
   }
 }
 
 resource "azurerm_subnet_route_table_association" "public_subnet_route_table_assoc" {
   subnet_id      = azurerm_subnet.public_subnet.id
   route_table_id = azurerm_route_table.public_subnet_route_table.id
-}
-
-# Public IP
-resource "azurerm_public_ip" "public_ip" {
-  resource_group_name = azurerm_resource_group.main_rg.name
-  location            = azurerm_resource_group.main_rg.location
-
-  name = "${var.group_name_prefix}-public-ip"
-
-  allocation_method = "Static"
-}
-
-resource "azurerm_bastion_host" "public_bastion" {
-  name                = "project_d_bastion"
-  resource_group_name = azurerm_resource_group.main_rg.name
-  location            = azurerm_resource_group.main_rg.location
-
-  ip_configuration {
-    name                 = "configuration"
-    subnet_id            = azurerm_subnet.public_subnet.id
-    public_ip_address_id = azurerm_public_ip.public_ip.id
-  }
 }
 
 # Network Interface Card
