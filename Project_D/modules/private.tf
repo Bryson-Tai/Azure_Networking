@@ -25,6 +25,7 @@ resource "azurerm_subnet" "private_subnet" {
 #   }
 # }
 
+#TODO: Un-comment this part for Scenario 3
 # resource "azurerm_subnet_route_table_association" "private_subnet_route_table_assoc" {
 #   subnet_id      = azurerm_subnet.private_subnet.id
 #   route_table_id = azurerm_route_table.private_subnet_route_table.id

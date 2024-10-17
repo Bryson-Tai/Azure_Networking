@@ -3,9 +3,7 @@
 ## Description
 
 - This project mainly to learn how 2 Virtual Machine communicated through Public IP when they are located in 2 different Virtual Network.
-
 - It could be using Terraform or OpenTofu to provision this project.
-
 - Nginx and MySQL server would be setup automatically with proper Network Security Group configured which accessible from your local machine.
 
 ## Architecture
@@ -89,7 +87,8 @@ terraform apply
 
 ## Destroy Deployment
 
-```bash
-# Destroy when you wish to destroy the deployment
-terraform destroy -auto-approve
-```
+- Destroy when you wish to destroy the deployment
+
+    ```bash
+        terraform destroy -auto-approve
+    ```

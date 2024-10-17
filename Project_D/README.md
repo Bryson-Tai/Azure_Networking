@@ -2,43 +2,42 @@
 
 ## Description
 
-- This project mainly to learn Network & Application Security Group of Azure.
-
+- This project mainly to learn Bastion & Route Table of Azure.
 - It could be using Terraform or OpenTofu to provision this project.
-
-- Nginx and Tomcat server would be setup automatically with proper Network & Application Security Group configured which accessible from your local machine.
+- This project is refer to [Azure Tutorial](https://learn.microsoft.com/en-us/azure/virtual-network/tutorial-create-route-table-portal).
 
 ## Architecture
 
-![Architecture Diagram](./architecture.png)
+![Architecture Diagram](./images/architecture.png)
 
 ## Architecture Explaination
 
-- A virtual network consists of 4 different subnets with VMs where these instances in Subnet 1, 2 and 3 would communicate with instances in Subnet 4.
+- A virtual network consists of 4 different subnets and 3 VM would be created.
+  - Bastion Subnet: Dedicated use for Bastion Only
+  - DMZ Subnet: Virtual Appliance Virtual Machine Located.
+  - Private Subnet: Private Virtual Machine Located.
+  - Public Subnet: Public Virtual Machine Located.
 
-- By default, all VMs are <ins>__NOT__</ins> able to communicate with each other.
-
-- All VMs are able to __Ping__ and __SSH__ from your local machine.
-
-- Only VMs label with Tomcat in Subnet 4 has port 8080 opened for viewing Tomcat default page.
+- Virtual Appliance VM enabled with __IP Forwarding__ to be as a middleware to route the traffic.
 
 ## Scenarios
 
-1. Subnet 1 server is allowed to access all servers in Subnet 4.
-2. Subnet 2 server is only allowed to access WebServerGroup servers in Subnet 4.
-3. Subnet 3 server is only allowed to access TomcatServerGroup servers in Subnet 4.
+1. Use `tracepath` from public VM to private VM - With Custom Route Table Configured
+    - Public VM will pass through Virtual Appliance VM and reach Private VM.
+2. Use `tracepath` from private VM to public VM - Using Default Route Table
+    - Private VM will reach Public VM without going through Virtual Appliance VM.
+3. Use `tracepath` from private VM to public VM - With Custom Route Table Configured - __Additional Scenario__
+    - Enable customer route table for Scenario 2.
+    - Private VM will pass through Virtual Appliance VM and reach Public VM.
 
 ## Notes Takeaway
 
-1. We are able to mix of IP addresses with Application Security Group. Check `/Project_C/deployment/main.tf`
-
-2. Application Security Group attached VM's NIC (Network Interface Card) layer.
-
-3. Network Security Group could attached at Subnet's (Preferrable) and NIC layer.
+1. Bastion Host requires a dedicated subnet for itself, if you try to create VM into this subnet, error would be prompted.
+2. Bastion Host requires to attach a public IP for publicly accessible.
 
 ## Prerequisite
 
-1. Please export your SUBSCRIPTION_ID to your terminal.
+1. Please export your __SUBSCRIPTION_ID__ to your terminal.
 
     ```bash
         export ARM_SUBSCRIPTION_ID=<Subscription ID from Azure Portal>
@@ -48,7 +47,7 @@
 
 ```bash
 # Go into /deployment directory
-cd ./Project_C/deployment
+cd ./Project_D/deployment
 
 # Init with Terraform/OpenTofu
 terraform init -upgrade
@@ -62,53 +61,43 @@ terraform apply
 
 ## Outcomes
 
-1. You may find all VMs public and private IPs outputed.
-2. You may try to ping or SSH to the VM using the public IPs, ssh private key located in `~/.ssh`.
+1. First Scenario
+    - Connect to Public VM via Bastion on Azure Portal.
+    - Then use command below, you should see similar output as the image provided.
+
+        ```bash
+            tracepath project-d-private-vm
+        ```
+
+        ![Public-DMZ-Private](./images/public-dmz-private.png)
+
+2. Second Scenario
+    - Connect to Private VM via Bastion on Azure Portal.
+    - Then use command below, you should see similar output as the image provided.
+
+        ```bash
+            tracepath project-d-public-vm
+        ```
+
+        ![Public-Private](./images/private-public.png)
+
+3. Third scenario
+    - Disconnect from Private VM.
+    - Then head over to [private.tf](./modules/private.tf) and uncomment the __TODO__ section.
+    - Run `terraform apply` again.
+    - Conenct to Private VM via Bastion again after apply complete.
+    - Run command below, you should see similar output as the image provided.
 
     ```bash
-        # Ping the VM
-        ping <public IP>
-
-        # SSH to the MySQL VM
-        ssh -i ~/.ssh/<private key file> adminuser@<public IP>
+        tracepath project-d-public-vm
     ```
 
-3. Private Key Files Name
-    - azure_vm_personal_subnet-1-client_1
-    - azure_vm_personal_subnet-2-client_2
-    - azure_vm_personal_subnet-3-client_3
-    - azure_vm_personal_subnet-4-tomcat
-    - azure_vm_personal_subnet-4-webserver
-
-4. You may play around with the VMs by SSH into it and use `curl` to get Nginx main page based on the scenario setup.
-
-    ```bash
-        ssh -i ~/.ssh/<private key file> adminuser@<public IP>
-
-        # If you are SSH to VMs in Subnet 1, you will get Nginx page, because 10.0.1.4 consider localhost
-        curl 10.0.1.4
-
-        # This would not be working since NSG is blocking it
-        curl 10.0.2.4
-
-        # Etc...
-    ```
-
-5. Test for getting Tomcat default page based on <ins>__scenario 3__</ins>.
-
-    ```bash
-        ssh -i ~/.ssh/azure_vm_personal_subnet-3-client_3 adminuser@<subnet 3 VM public IP>
-
-        # Get Tomcat default page
-        curl <Tomcat Server private IP>:8080
-
-        # Unable to get response from WebServer VM
-        curl <Web Server private IP>
-    ```
+    ![Private-DMZ-Public](./images/private-dmz-public.png)
 
 ## Destroy Deployment
 
-```bash
-# Destroy when you wish to destroy the deployment
-terraform destroy -auto-approve
-```
+- Destroy when you wish to destroy the deployment
+
+    ```bash
+        terraform destroy -auto-approve
+    ```
