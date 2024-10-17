@@ -20,6 +20,8 @@
 
 - Virtual Appliance VM enabled with __IP Forwarding__ to be as a middleware to route the traffic.
 
+- Virtual Machine's Login ID is `adminuser` and Password `Admin_123`
+
 ## Scenarios
 
 1. Use `tracepath` from public VM to private VM - With Custom Route Table Configured
@@ -32,8 +34,15 @@
 
 ## Notes Takeaway
 
-1. Bastion Host requires a dedicated subnet for itself, if you try to create VM into this subnet, error would be prompted.
-2. Bastion Host requires to attach a public IP for publicly accessible.
+1. Route table
+    - By default, it is configured by Azure automatically to each subnet. Check [official documentation](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview) for more information.
+2. Bastion Host
+    - Bastion host needs to be located in a dedicated subnet name `AzureBastionSubnet` and with a dedicated subnet prefix, e.g. `10.0.1.0/26`
+    - Bastion host is not a __~~Virtual Machine~~__, but a service provided by Azure, where each of the VM within the same Virtual Network is able connect by using it.
+    - Bastion Host requires to attach a public IP for publicly accessible.
+    - This is for security purpose and easier management.
+    - It enabled with __RDP (Port 3389)__ and __SSH (22)__ to ensure secure connection.
+    - Easier management based on we do not needs to manage couple of SSH Key while we have tons of Virtual Machine.
 
 ## Prerequisite
 
