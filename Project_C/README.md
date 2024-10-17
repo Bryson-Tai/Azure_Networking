@@ -3,9 +3,7 @@
 ## Description
 
 - This project mainly to learn Network & Application Security Group of Azure.
-
 - It could be using Terraform or OpenTofu to provision this project.
-
 - Nginx and Tomcat server would be setup automatically with proper Network & Application Security Group configured which accessible from your local machine.
 
 ## Architecture
@@ -15,11 +13,8 @@
 ## Architecture Explaination
 
 - A virtual network consists of 4 different subnets with VMs where these instances in Subnet 1, 2 and 3 would communicate with instances in Subnet 4.
-
 - By default, all VMs are <ins>__NOT__</ins> able to communicate with each other.
-
 - All VMs are able to __Ping__ and __SSH__ from your local machine.
-
 - Only VMs label with Tomcat in Subnet 4 has port 8080 opened for viewing Tomcat default page.
 
 ## Scenarios
@@ -30,10 +25,8 @@
 
 ## Notes Takeaway
 
-1. We are able to mix of IP addresses with Application Security Group. Check `/Project_C/deployment/main.tf`
-
+1. We are able to mix of IP addresses with Application Security Group. Check [main.tf](./deployment/main.tf)
 2. Application Security Group attached VM's NIC (Network Interface Card) layer.
-
 3. Network Security Group could attached at Subnet's (Preferrable) and NIC layer.
 
 ## Prerequisite
@@ -108,7 +101,8 @@ terraform apply
 
 ## Destroy Deployment
 
-```bash
-# Destroy when you wish to destroy the deployment
-terraform destroy -auto-approve
-```
+- Destroy when you wish to destroy the deployment
+
+    ```bash
+        terraform destroy -auto-approve
+    ```

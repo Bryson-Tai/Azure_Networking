@@ -12,12 +12,3 @@ repos:
       args:
         - --hook-config=--add-to-existing-file=true
         - --hook-config=--create-file-if-not-exist=true
-
-# - repo: local
-#   hooks:
-#     - id: terraform-docs
-#       name: terraform-docs
-#       language: docker_image
-#       entry: quay.io/terraform-docs/terraform-docs:latest
-#       args: ["markdown", "table", "--output-file", "TF_Project_A.md", "./Project_A"]
-#       pass_filenames: false

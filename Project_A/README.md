@@ -3,9 +3,7 @@
 ## Description
 
 - This project mainly to learn how to setup Virtual Network, Subnet, and configure Network Security Group (NSG).
-
 - It could be using Terraform or OpenTofu to provision this project.
-
 - Nginx server would be setup automatically with proper NSG configured which accessible from your local machine.
 
 ## Architecture
@@ -53,7 +51,8 @@ terraform apply
 
 ## Destroy Deployment
 
-```bash
-# Destroy when you wish to destroy the deployment
-terraform destroy -auto-approve
-```
+- Destroy when you wish to destroy the deployment
+
+    ```bash
+        terraform destroy -auto-approve
+    ```
