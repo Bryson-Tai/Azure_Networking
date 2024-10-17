@@ -2,7 +2,7 @@
 
 ## Disclaimer
 
-All modules existed here are only for learning purpose and **NOT Production Ready**. Please refer and utilize it wisely.
+All modules existed here are only for learning purpose and **NOT Production Ready**. Please refer and utilize it wisely. Author is and would not taking any responsibilities for any form of individual, party or organization use case.
 
 ## Projects Overview
 
