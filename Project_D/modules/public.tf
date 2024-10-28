@@ -21,7 +21,7 @@ resource "azurerm_route_table" "public_subnet_route_table" {
     name                   = "to-private-subnet"
     next_hop_type          = "VirtualAppliance"
     next_hop_in_ip_address = "10.0.3.4"    # Through Virtual Appliance - DMZ
-    address_prefix         = "10.0.2.0/24" # Destination Address - From Private Subnet
+    address_prefix         = "10.0.2.0/24" # Destination Address - To Private Subnet
   }
 }
 
