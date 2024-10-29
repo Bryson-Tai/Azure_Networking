@@ -10,6 +10,7 @@ No requirements.
 | Name | Version |
 |------|---------|
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.3.0 |
+| <a name="provider_http"></a> [http](#provider\_http) | 3.4.5 |
 
 ## Modules
 
@@ -37,6 +38,7 @@ No modules.
 | [azurerm_subnet.public_subnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet) | resource |
 | [azurerm_subnet_network_security_group_association.private_nsg_assoc](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet_network_security_group_association) | resource |
 | [azurerm_virtual_network.vn](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network) | resource |
+| [http_http.ip](https://registry.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) | data source |
 
 ## Inputs
 
@@ -49,5 +51,5 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_sa_endpoint"></a> [sa\_endpoint](#output\_sa\_endpoint) | n/a |
+| <a name="output_storage_account_name"></a> [storage\_account\_name](#output\_storage\_account\_name) | Storage Account Name |
 <!-- END OF PRE-COMMIT-OPENTOFU DOCS HOOK -->

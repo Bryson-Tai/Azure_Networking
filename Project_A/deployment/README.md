@@ -6,6 +6,7 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.0 |
+| <a name="requirement_http"></a> [http](#requirement\_http) | ~> 3.0 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | ~> 3.0 |
 | <a name="requirement_tls"></a> [tls](#requirement\_tls) | ~> 4.0 |
 

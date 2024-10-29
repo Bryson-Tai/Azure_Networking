@@ -13,14 +13,14 @@
 ## Architecture Explaination
 
 - A virtual network consists of 4 different subnets and 3 VM would be created.
-  - Bastion Subnet: Dedicated use for Bastion Only
+  - Bastion Subnet: Dedicated use for Bastion Only.
   - DMZ Subnet: Virtual Appliance Virtual Machine Located.
   - Private Subnet: Private Virtual Machine Located.
   - Public Subnet: Public Virtual Machine Located.
 
 - Virtual Appliance VM enabled with __IP Forwarding__ to be as a middleware to route the traffic.
 
-- Virtual Machine's Login ID is `adminuser` and Password `Admin_123`
+- All Virtual Machine's Login ID is `adminuser` and Password `Admin_123`
 
 ## Scenarios
 
