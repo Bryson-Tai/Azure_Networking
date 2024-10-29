@@ -23,7 +23,7 @@ resource "azurerm_public_ip" "public_ip" {
 
 # Since bastion would act as a hop server, it require a public IP address for public access from our local host
 resource "azurerm_bastion_host" "public_bastion" {
-  name                = "project_d_bastion"
+  name                = "project_e_bastion"
   resource_group_name = azurerm_resource_group.main_rg.name
   location            = azurerm_resource_group.main_rg.location
 
