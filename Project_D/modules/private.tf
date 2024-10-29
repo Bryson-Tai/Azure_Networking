@@ -9,7 +9,7 @@ resource "azurerm_subnet" "private_subnet" {
   ]
 }
 
-#TODO: Un-comment this part for Scenario 3
+#TODO: Un-comment this part for Scenario 3, remember perform an "apply"
 # resource "azurerm_route_table" "private_subnet_route_table" {
 #   name                = "private-dmz-public-route-table"
 #   resource_group_name = azurerm_resource_group.main_rg.name
@@ -21,11 +21,11 @@ resource "azurerm_subnet" "private_subnet" {
 #     name                   = "to-public-subnet"
 #     next_hop_type          = "VirtualAppliance"
 #     next_hop_in_ip_address = "10.0.3.4" # To Virtual Appliance - DMZ
-#     address_prefix         = "10.0.0.0/24" # Destination Address - From Private Subnet
+#     address_prefix         = "10.0.0.0/24" # Destination Address - Route To Public Subnet
 #   }
 # }
 
-#TODO: Un-comment this part for Scenario 3
+#TODO: Un-comment this part for Scenario 3, remember perform an "apply"
 # resource "azurerm_subnet_route_table_association" "private_subnet_route_table_assoc" {
 #   subnet_id      = azurerm_subnet.private_subnet.id
 #   route_table_id = azurerm_route_table.private_subnet_route_table.id

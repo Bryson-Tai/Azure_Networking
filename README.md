@@ -10,3 +10,4 @@ All modules existed here are only for learning purpose and **NOT Production Read
 - [Project B: Communication of Nginx & MySQL Remote Server in 2 VN and Subnet, NSG](./Project_B/README.md)
 - [Project C: Network & Application Security Group](./Project_C/README.md)
 - [Project D: Bastion & Route Table Study](./Project_D/README.md)
+- [Project E: Storage Account with Subnet Service Endpoint](./Project_E/README.md)

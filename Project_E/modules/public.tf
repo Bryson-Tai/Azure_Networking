@@ -10,26 +10,6 @@ resource "azurerm_subnet" "public_subnet" {
   ]
 }
 
-resource "azurerm_route_table" "public_subnet_route_table" {
-  name                = "public-dmz-private-route-table"
-  resource_group_name = azurerm_resource_group.main_rg.name
-  location            = azurerm_resource_group.main_rg.location
-
-  # NOTE: Route from current public subnet (10.0.0.0/24) through VirtualAppliance VM (10.0.3.4) to Private Subnet 10.0.2.0/24
-
-  route {
-    name                   = "to-private-subnet"
-    next_hop_type          = "VirtualAppliance"
-    next_hop_in_ip_address = "10.0.3.4"    # Through Virtual Appliance - DMZ
-    address_prefix         = "10.0.2.0/24" # Destination Address - Route To Private Subnet
-  }
-}
-
-resource "azurerm_subnet_route_table_association" "public_subnet_route_table_assoc" {
-  subnet_id      = azurerm_subnet.public_subnet.id
-  route_table_id = azurerm_route_table.public_subnet_route_table.id
-}
-
 # Network Interface Card
 resource "azurerm_network_interface" "public_vm_nic" {
   resource_group_name = azurerm_resource_group.main_rg.name

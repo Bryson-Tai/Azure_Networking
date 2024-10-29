@@ -19,8 +19,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_nginx_infra"></a> [nginx\_infra](#module\_nginx\_infra) | ../modules | n/a |
-| <a name="module_sql_infra"></a> [sql\_infra](#module\_sql\_infra) | ../modules | n/a |
+| <a name="module_project_e"></a> [project\_e](#module\_project\_e) | ../modules | n/a |
 
 ## Resources
 
@@ -34,6 +33,5 @@ No inputs.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_nginx_infra_ips"></a> [nginx\_infra\_ips](#output\_nginx\_infra\_ips) | n/a |
-| <a name="output_sql_infra_ips"></a> [sql\_infra\_ips](#output\_sql\_infra\_ips) | n/a |
+| <a name="output_storage_account_name"></a> [storage\_account\_name](#output\_storage\_account\_name) | Storage Account Name |
 <!-- END OF PRE-COMMIT-OPENTOFU DOCS HOOK -->
