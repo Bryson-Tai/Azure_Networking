@@ -40,6 +40,8 @@
     - No downtime to resources in either Virtual Network when creating the peering, or after peering is created.
 4. Aware that the peering VN could not using the same address prefix. It will prompt with error of address overlapped.
     - E.g.: Virtual Network 1 has prefix `10.0.0.0/16`, then Virtual Network 2 must be different from it, such as using `10.1.0.0/16` is allowed.
+5. By using Terraform/OpenTofu to setup VN Peering, we need to have bi-directional setup, or else it can't be fully synchronize
+    - Check [peering.tf](./modules/peering.tf)
 
 ## Prerequisite
 
@@ -72,7 +74,8 @@ terraform apply
     - Then use command below, you should see similar output as the image provided.
 
         ```bash
-            ping -c vm-2
+            # Try to ping VM in Virtual Network 2
+            ping -c 10.1.2.4
         ```
 
         ![VM-1-ping-VM-2](./images/vm1-ping-vm2.png)
@@ -82,7 +85,8 @@ terraform apply
     - Then use command below, you should see similar output as the image provided.
 
         ```bash
-            ping -c vm-1
+            # Try to ping VM in Virtual Network 1
+            ping -c 10.0.2.4
         ```
 
         ![VM-2-ping-VM-1](./images/vm2-ping-vm1.png)
@@ -95,6 +99,7 @@ terraform apply
         terraform destroy -auto-approve
     ```
 
-## Troubleshooting
+## Known Issues
 
-- If you meet any issue, try to run `terraform apply` again and see if the issue resolved, else look for solution from the internet :)
+- According by Azure tutorial, we could ping the VM by using its name, but I could not achieve that.
+- Instead, I am using the VM's private IP and it is working, not sure about the cause. Feel free to open an `Issue` or `Pull Request` to discuss and resolve this issue :)
