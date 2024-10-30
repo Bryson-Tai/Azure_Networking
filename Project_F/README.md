@@ -101,5 +101,5 @@ terraform apply
 
 ## Known Issues
 
-- According by Azure tutorial, we could ping the VM by using its name, but I could not achieve that.
+- According by Azure tutorial, we could ping the VM by using its name, but I could not achieve that. I have also tested manual way by following the tutorial, it still could not be achieved.
 - Instead, I am using the VM's private IP and it is working, not sure about the cause. Feel free to open an `Issue` or `Pull Request` to discuss and resolve this issue :)
