@@ -83,7 +83,7 @@ terraform apply
         ```bash
             sudo mkdir /mnt/file-share
 
-            sudo mount --types cifs //allowaccount123.file.core.windows.net/project-e-file-share /mnt/file-share --options vers=3.0,username=allowaccount123,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
+            sudo mount --types cifs //allowaccount123.file.core.windows.net/allow-project-g-file-share /mnt/file-share --options vers=3.0,username=allowaccount123,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
         ```
 
         ![allowaccount-mounted-success](./images/allowaccount-mounted-success.png)
@@ -96,7 +96,7 @@ terraform apply
         ```bash
             sudo mkdir /mnt/file-share
 
-            sudo mount --types cifs //denyaccount123.file.core.windows.net/project-e-file-share /mnt/file-share --options vers=3.0,username=denyaccount123,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
+            sudo mount --types cifs //denyaccount123.file.core.windows.net/deny-project-g-file-share /mnt/file-share --options vers=3.0,username=denyaccount123,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
         ```
 
         ![denyaccount-mounted-failure](./images/denyaccount-mounted-failure.png)
