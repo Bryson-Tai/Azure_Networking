@@ -1,7 +1,7 @@
 # Bastion require a dedicated subnet for itself
 resource "azurerm_subnet" "bastion_subnet" {
   resource_group_name  = azurerm_resource_group.main_rg.name
-  virtual_network_name = azurerm_virtual_network.vn_1.name
+  virtual_network_name = azurerm_virtual_network.vn.name
 
   # Bastion require 'AzureBastionSubnet' as the exact name of Subnet for creation
   name = "AzureBastionSubnet"
