@@ -1,7 +1,7 @@
 # Azure Networking Learning for Beginner
 
 > [!CAUTION]
-> All modules existed here are only for learning purpose and <ins>**NOT Production Ready**</ins>. Please refer and utilize it wisely. Author is and would not taking any responsibilities for any form of individual, party or organization use case.
+> This repository and its modules are provided for educational and experimental purposes only. They are <ins>**NOT intended for production use**</ins>. The author assumes no liability for any direct or indirect consequences arising from the use or misuse of this software.
 
 ## Run
 
