@@ -1,6 +1,6 @@
 # Azure Networking Learning for Beginner
 
-> [!CAUTION] Disclaimer
+> [!CAUTION]
 > All modules existed here are only for learning purpose and <ins>**NOT Production Ready**</ins>. Please refer and utilize it wisely. Author is and would not taking any responsibilities for any form of individual, party or organization use case.
 
 ## Run
