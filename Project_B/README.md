@@ -8,7 +8,7 @@
 
 ## Architecture
 
-![Architecture Diagram](./architecture.png)
+![Architecture Diagram](./images/architecture.png)
 
 ## Prerequisite
 
