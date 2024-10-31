@@ -13,7 +13,7 @@ Feel free to clone this project and run on your own machine, ensure you have too
 
 ## Projects Overview
 
-Details deployment steps are written in the README.md in each project directory respectively, feel free to click to any link below.
+Details deployment steps are written in the `README.md` in each project directory respectively, feel free to click to any link below.
 
 - [Project A: Basic VN and Subnet, NSG](./Project_A/README.md)
 - [Project B: Communication of Nginx & MySQL Remote Server in 2 VN and Subnet, NSG](./Project_B/README.md)
