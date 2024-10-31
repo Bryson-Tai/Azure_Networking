@@ -1,4 +1,4 @@
-# Project G: Associate Service Endpoint Policies
+# Project G: Associate Subnet Service Endpoint Policies
 
 ## Description
 

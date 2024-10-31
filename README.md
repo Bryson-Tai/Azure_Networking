@@ -12,3 +12,4 @@ All modules existed here are only for learning purpose and **NOT Production Read
 - [Project D: Bastion & Route Table Study](./Project_D/README.md)
 - [Project E: Storage Account with Subnet Service Endpoint](./Project_E/README.md)
 - [Project F: Virtual Network Peering](./Project_F/README.md)
+- [Project G: Associate Subnet Service Endpoint Policies](./Project_G/README.md)
