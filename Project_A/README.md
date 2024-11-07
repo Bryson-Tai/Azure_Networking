@@ -12,7 +12,7 @@
 
 ## Prerequisite
 
-1. Please export your SUBSCRIPTION_ID to your terminal
+1. Please export your `ARM_SUBSCRIPTION_ID` to your terminal. This is your subscription ID from Azure Portal.
 
     ```bash
         export ARM_SUBSCRIPTION_ID=<Subscription ID from Azure Portal>
